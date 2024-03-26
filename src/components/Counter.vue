@@ -1,11 +1,32 @@
 <script setup>
 import { ref } from 'vue';
 
-const counter = ref(0);
+const props = defineProps({
+  initialValue: Number
+})
+
+const counter = ref(props.initialValue ?? 0);
 </script>
 
 <template>
-  <button @click="counter++">Increment</button>
-  &nbsp;
-  <span>{{ counter }}</span>
+  <div class="counter">
+    <slot name="header"></slot>
+    <div>
+      <button @click="counter++">Increment</button>
+      <span class="counter-text">{{ counter }}</span>
+    </div>
+    <slot name="footer"></slot>
+  </div>
 </template>
+
+<style scoped>
+.counter {
+  background: #ccc;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.counter-text {
+  margin-left: 10px;
+}
+</style>

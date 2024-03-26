@@ -21,7 +21,15 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
         point for anyone looking to build a personal website, blog, or portfolio
         with Astro.
       </p>
-      <Counter client:load />
+      <Counter client:load initialValue={2}>
+        <div slot="header">
+          <h4>Counter component</h4>
+          <p>Start by clicking in the button and the number will increase</p>
+        </div>
+        <div slot="footer">
+          <p>Credits by VueSchool</p>
+        </div>
+      </Counter>
       <p>
         This template comes with a few integrations already configured in your
         <code>astro.config.mjs</code> file. You can customize your setup with
